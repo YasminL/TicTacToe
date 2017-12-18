@@ -35,8 +35,8 @@ NSString *circleIcon = @"circleIcon";
 
 - (void)createNewGame {
     self.currentPlayer = [[Player alloc] initWithPlayerType:Cross icon:crossIcon];
-    self.board = [[Board alloc] initWithItems:16];
-    self.game = [[Game alloc] initWithState:Active];
+    self.board = [Board new]; 
+    self.game = [[Game alloc] initWithState:Active board:self.board];
 }
 
 - (void)resetGame {
@@ -91,22 +91,21 @@ NSString *circleIcon = @"circleIcon";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     BoardCollectionViewCell *cell = (BoardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     if (self.game.state == Active) {
-        switch (self.currentPlayer.type) {
-            case Cross:
-                self.currentPlayer.type = Circle;
-                [cell.crossCircleButton setImage:[UIImage imageNamed:self.currentPlayer.icon] forState:UIControlStateNormal];
-                self.currentPlayer.icon = circleIcon;
-                break;
-            case Circle:
-                self.currentPlayer.type = Cross;
-                [cell.crossCircleButton setImage:[UIImage imageNamed:self.currentPlayer.icon] forState:UIControlStateNormal];
-                self.currentPlayer.icon = crossIcon;
-                
-            default:
-                break;
-        }
+        [cell.crossCircleButton setImage:[UIImage imageNamed:self.currentPlayer.icon] forState:UIControlStateNormal];
         cell.crossCircleButton.hidden = NO;
+        [self toggleNextPlayer];
         self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
+    }
+}
+- (void)toggleNextPlayer {
+    switch (self.currentPlayer.type) {
+        case Cross:
+            self.currentPlayer.type = Circle;
+            self.currentPlayer.icon = circleIcon;
+            break;
+        case Circle:
+            self.currentPlayer.type = Cross;
+            self.currentPlayer.icon = crossIcon;
     }
 }
 

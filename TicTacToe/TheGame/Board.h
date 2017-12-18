@@ -10,5 +10,4 @@
 
 @interface Board : NSObject
 @property (nonatomic) int items;
-- (id)initWithItems:(int)items; 
 @end

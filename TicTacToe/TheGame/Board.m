@@ -8,13 +8,10 @@
 
 #import "Board.h"
 
-@interface Board ()
-@end
-
 @implementation Board
-- (id)initWithItems:(int)items {
+- (id)init {
     if (self = [super init]) {
-        self.items = items;
+        self.items = 16;
     }
     return self;
 }

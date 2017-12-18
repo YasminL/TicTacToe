@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Board.h"
 
 typedef enum {
     Active,
@@ -15,5 +16,7 @@ typedef enum {
 
 @interface Game : NSObject
 @property (nonatomic) GameState state;
-- (id)initWithState:(GameState)state;
+@property (nonatomic) NSArray *winningCombinations;
+@property (nonatomic) NSArray *gameCombinations;
+- (id)initWithState:(GameState)state board:(Board *)board;
 @end
