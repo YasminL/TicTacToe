@@ -36,7 +36,7 @@ NSString *circleIcon = @"circleIcon";
 - (void)createNewGame {
     self.currentPlayer = [[Player alloc] initWithPlayerType:Cross icon:crossIcon];
     self.board = [Board new]; 
-    self.game = [[Game alloc] initWithState:Active board:self.board];
+    self.game = [[Game alloc] initWithBoard:self.board];
 }
 
 - (void)resetGame {
@@ -60,6 +60,10 @@ NSString *circleIcon = @"circleIcon";
 - (void)setupUI {
     [self.navigationItem setTitle:navigationBarTitle];
     self.currentPlayerLabel.text = currentPlayerText;
+}
+
+- (BOOL)checkForAWinner {
+    return [self.game isThereAWinningCombination];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -90,12 +94,12 @@ NSString *circleIcon = @"circleIcon";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     BoardCollectionViewCell *cell = (BoardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    if (self.game.state == Active) {
-        [cell.crossCircleButton setImage:[UIImage imageNamed:self.currentPlayer.icon] forState:UIControlStateNormal];
-        cell.crossCircleButton.hidden = NO;
-        [self toggleNextPlayer];
-        self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
-    }
+    [cell.crossCircleButton setImage:[UIImage imageNamed:self.currentPlayer.icon] forState:UIControlStateNormal];
+    cell.crossCircleButton.hidden = NO;
+    [self.game.gameCombinations replaceObjectAtIndex:indexPath.row withObject:self.currentPlayer];
+    [self toggleNextPlayer];
+    self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
+    [self checkForAWinner];
 }
 - (void)toggleNextPlayer {
     switch (self.currentPlayer.type) {
@@ -106,6 +110,9 @@ NSString *circleIcon = @"circleIcon";
         case Circle:
             self.currentPlayer.type = Cross;
             self.currentPlayer.icon = crossIcon;
+            break;
+        default:
+            break;
     }
 }
 

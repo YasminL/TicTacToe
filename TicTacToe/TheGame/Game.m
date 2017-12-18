@@ -7,9 +7,7 @@
 //
 
 #import "Game.h"
-
 #import "Board.h"
-#import "Player.h"
 
 @interface Game ()
 @property (nonatomic) Board *board;
@@ -17,16 +15,19 @@
 
 @implementation Game
 
-- (id)initWithState:(GameState)state board:(Board *)board {
+- (id)initWithBoard:(Board *)board {
     if (self = [super init]) {
-        self.state = state;
         self.board = board;
-        self.gameCombinations = @[
-                            @[], @[], @[], @[],
-                            @[], @[], @[], @[],
-                            @[], @[], @[], @[],
-                            @[], @[], @[], @[],
-                            ];
+        Player *player = [[Player alloc] initWithPlayerType:None icon:nil];
+        self.gameCombinations = [[NSMutableArray alloc] init];
+        [self.gameCombinations addObjectsFromArray:@[
+                                                     player, player, player, player,
+                                                     player, player, player, player,
+                                                     player, player, player, player,
+                                                     player, player, player, player,
+                                                     ]
+         ];
+        
         self.winningCombinations = @[
                                      @[@0,@1,@2,@3], @[@4,@5,@6,@7], @[@8,@9,@10,@11], @[@12,@13,@14,@15], // Horizontal
                                      @[@0,@4,@8,@12], @[@1,@5,@9,@13], @[@2,@6,@10,@14], @[@3,@7,@11,@15], // Vertical
@@ -35,5 +36,17 @@
                                      ];
     }
     return self;
+}
+
+- (BOOL)isThereAWinningCombination {
+    Player *player;
+    for (NSArray *combination in self.winningCombinations) {
+        // check for the different kinds of combinations
+        player = [self.gameCombinations objectAtIndex:0];
+        if (player.type != None) {
+            printf("");
+        }
+    }
+    return false;
 }
 @end

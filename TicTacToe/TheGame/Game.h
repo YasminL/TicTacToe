@@ -8,15 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Board.h"
-
-typedef enum {
-    Active,
-    Inactive
-} GameState;
+#import "Player.h"
 
 @interface Game : NSObject
-@property (nonatomic) GameState state;
-@property (nonatomic) NSArray *winningCombinations;
-@property (nonatomic) NSArray *gameCombinations;
-- (id)initWithState:(GameState)state board:(Board *)board;
+@property (nonatomic) NSArray<NSArray *> *winningCombinations;
+@property (nonatomic) NSMutableArray<Player *> *gameCombinations;
+- (id)initWithBoard:(Board *)board;
+- (BOOL)isThereAWinningCombination;
 @end

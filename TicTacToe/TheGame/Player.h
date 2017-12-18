@@ -10,7 +10,8 @@
 
 typedef enum {
     Cross,
-    Circle
+    Circle,
+    None
 } PlayerType;
 
 @interface Player : NSObject
