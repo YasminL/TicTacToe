@@ -56,12 +56,14 @@ NSString *circleIcon = @"circleIcon";
 
 - (void)updateUI {
     [self.navigationItem setTitle:navigationBarTitle];
-    self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
     self.currentPlayerLabel.text = currentPlayerText;
+    [self.currentPlayerLabel setTextColor:[UIColor blackColor]];
+    self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
 }
 
 - (void)updateUIWithWinner:(Player *)player {
     self.currentPlayerLabel.text = winnerText;
+    [self.currentPlayerLabel setTextColor:[UIColor redColor]];
     self.currentPlayerIcon.image = [UIImage imageNamed:player.icon];
 }
 
