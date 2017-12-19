@@ -16,7 +16,7 @@
 }
 
 - (void)applyStyle {
-    [self.playRestartButton setTintColor:[UIColor blackColor]];
+    [self.playRestartButton setTintColor:[UIColor whiteColor]];
 }
 
 - (IBAction)didTapButton:(id)sender {
