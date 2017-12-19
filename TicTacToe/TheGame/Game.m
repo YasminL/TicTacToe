@@ -15,29 +15,40 @@
 
 @implementation Game
 
-- (id)initWithBoard:(Board *)board {
+- (id)initWithBoard:(Board *)board withActiveGame:(BOOL)gameStatus{
     if (self = [super init]) {
         self.board = board;
-        self.isGameActive = YES;
-        
-        Player *player = [[Player alloc] initWithPlayerType:None icon:nil];
-        self.gameCombinations = [[NSMutableArray alloc] initWithCapacity:16];
-        for (int i=0;i < 16; i++) {
-            [self.gameCombinations addObject:player];
-        }
-
-        self.winningCombinations = @[
-                                     @[@0,@1,@2,@3], @[@4,@5,@6,@7], @[@8,@9,@10,@11], @[@12,@13,@14,@15], // Horizontal
-                                     @[@0,@4,@8,@12], @[@1,@5,@9,@13], @[@2,@6,@10,@14], @[@3,@7,@11,@15], // Vertical
-                                     @[@0,@5,@10,@15], @[@3,@6,@9,@12], // Diaginal
-                                     @[@0,@3,@12,@15], // Corners
-                                     @[@0,@1,@4,@5], @[@1,@2,@5,@6], @[@2,@3,@6,@7], @[@4,@5,@8,@9], @[@5,@6,@9,@10], @[@6,@7,@10,@11], @[@8,@9,@12,@13], @[@9,@10,@13,@14], @[@10,@11,@14,@15],
-                                     ];
+        self.isGameActive = gameStatus;
+        [self setupGameCombinations];
+        [self setupWinningCombinations];
     }
     return self;
 }
 
-- (BOOL)isThereAWinningCombination {
+- (void)setupGameCombinations {
+    Player *player = [[Player alloc] initWithPlayerType:None icon:nil];
+    self.gameCombinations = [[NSMutableArray alloc] initWithCapacity:16];
+    for (int i=0;i < 16; i++) {
+        [self.gameCombinations addObject:player];
+    }
+}
+
+- (void)setupWinningCombinations {
+    self.winningCombinations = @[
+                                 // Horizontal
+                                 @[@0,@1,@2,@3], @[@4,@5,@6,@7], @[@8,@9,@10,@11], @[@12,@13,@14,@15],
+                                 // Vertical
+                                 @[@0,@4,@8,@12], @[@1,@5,@9,@13], @[@2,@6,@10,@14], @[@3,@7,@11,@15],
+                                 // Diaginal
+                                 @[@0,@5,@10,@15], @[@3,@6,@9,@12],
+                                 // Corners
+                                 @[@0,@3,@12,@15],
+                                 //Boxes
+                                 @[@0,@1,@4,@5], @[@1,@2,@5,@6], @[@2,@3,@6,@7], @[@4,@5,@8,@9], @[@5,@6,@9,@10], @[@6,@7,@10,@11], @[@8,@9,@12,@13], @[@9,@10,@13,@14], @[@10,@11,@14,@15],
+                                 ];
+}
+
+- (BOOL)hasWinningCombination {
     for (NSArray *combination in self.winningCombinations) {
         BOOL combinationHasPlayers = [self hasPlayersFor:combination];
         int firstIndex = (int)[(NSNumber *)[combination objectAtIndex:0] integerValue];

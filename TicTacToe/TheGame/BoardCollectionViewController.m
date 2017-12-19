@@ -39,7 +39,7 @@ NSString *circleIcon = @"circleIcon";
 - (void)createNewGame {
     self.currentPlayer = [[Player alloc] initWithPlayerType:Cross icon:crossIcon];
     self.board = [Board new]; 
-    self.game = [[Game alloc] initWithBoard:self.board];
+    self.game = [[Game alloc] initWithBoard:self.board withActiveGame:YES]; 
 }
 
 - (void)resetGame {
@@ -49,7 +49,7 @@ NSString *circleIcon = @"circleIcon";
 }
 
 - (BOOL)checkForAWinner {
-    return [self.game isThereAWinningCombination];
+    return [self.game hasWinningCombination];
 }
 
 #pragma mark <UI>

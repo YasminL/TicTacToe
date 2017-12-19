@@ -25,7 +25,7 @@ Player *circlePlayer;
 
 - (void)setUp {
     board = [[Board alloc] init];
-    game = [[Game alloc] initWithBoard:board];
+    game = [[Game alloc] initWithBoard:board withActiveGame:YES];
     crossPlayer1 = [[Player alloc] initWithPlayerType:Cross icon:@"crossIcon"];
     crossPlayer2 = [[Player alloc] initWithPlayerType:Cross icon:@"crossIcon"];
     crossPlayer3 = [[Player alloc] initWithPlayerType:Cross icon:@"crossIcon"];
@@ -40,7 +40,7 @@ Player *circlePlayer;
     [game.gameCombinations replaceObjectAtIndex:3 withObject:crossPlayer4];
     
     BOOL expected = YES;
-    BOOL result = [game isThereAWinningCombination];
+    BOOL result = [game hasWinningCombination];
     XCTAssertEqual(expected, result);
 }
 
@@ -51,7 +51,7 @@ Player *circlePlayer;
     [game.gameCombinations replaceObjectAtIndex:12 withObject:crossPlayer4];
     
     BOOL expected = YES;
-    BOOL result = [game isThereAWinningCombination];
+    BOOL result = [game hasWinningCombination];
     XCTAssertEqual(expected, result);
 }
 
@@ -62,7 +62,7 @@ Player *circlePlayer;
     [game.gameCombinations replaceObjectAtIndex:15 withObject:crossPlayer4];
     
     BOOL expected = YES;
-    BOOL result = [game isThereAWinningCombination];
+    BOOL result = [game hasWinningCombination];
     XCTAssertEqual(expected, result);
 }
 
@@ -73,7 +73,7 @@ Player *circlePlayer;
     [game.gameCombinations replaceObjectAtIndex:15 withObject:crossPlayer4];
     
     BOOL expected = YES;
-    BOOL result = [game isThereAWinningCombination];
+    BOOL result = [game hasWinningCombination];
     XCTAssertEqual(expected, result);
 }
 
@@ -84,7 +84,7 @@ Player *circlePlayer;
     [game.gameCombinations replaceObjectAtIndex:5 withObject:crossPlayer4];
     
     BOOL expected = YES;
-    BOOL result = [game isThereAWinningCombination];
+    BOOL result = [game hasWinningCombination];
     XCTAssertEqual(expected, result);
 }
 
@@ -95,32 +95,8 @@ Player *circlePlayer;
     [game.gameCombinations replaceObjectAtIndex:3 withObject:crossPlayer4];
     
     BOOL expected = NO;
-    BOOL result = [game isThereAWinningCombination];
+    BOOL result = [game hasWinningCombination];
     XCTAssertEqual(expected, result);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @end
 
