@@ -13,6 +13,7 @@
 @interface Game : NSObject
 @property (nonatomic) NSArray<NSArray *> *winningCombinations;
 @property (nonatomic) NSMutableArray<Player *> *gameCombinations;
+@property (nonatomic) BOOL isGameActive;
 - (id)initWithBoard:(Board *)board;
 - (BOOL)isThereAWinningCombination;
 @end

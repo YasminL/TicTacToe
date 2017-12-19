@@ -30,7 +30,7 @@ NSString *circleIcon = @"circleIcon";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNewGame];
-    [self setupUI];
+    [self updateUI];
 }
 
 - (void)createNewGame {
@@ -54,11 +54,8 @@ NSString *circleIcon = @"circleIcon";
 }
 
 - (void)updateUI {
-    self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
-}
-
-- (void)setupUI {
     [self.navigationItem setTitle:navigationBarTitle];
+    self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
     self.currentPlayerLabel.text = currentPlayerText;
 }
 
@@ -93,27 +90,30 @@ NSString *circleIcon = @"circleIcon";
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    BoardCollectionViewCell *cell = (BoardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    [cell.crossCircleButton setImage:[UIImage imageNamed:self.currentPlayer.icon] forState:UIControlStateNormal];
-    cell.crossCircleButton.hidden = NO;
-    [self.game.gameCombinations replaceObjectAtIndex:indexPath.row withObject:self.currentPlayer];
-    [self toggleNextPlayer];
-    self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
-    BOOL hasWinner = [self checkForAWinner];
-    if (hasWinner) {
-        NSLog(@"We have a winner!");
+    if (self.game.isGameActive) {
+        BoardCollectionViewCell *cell = (BoardCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        [cell.crossCircleButton setImage:[UIImage imageNamed:self.currentPlayer.icon] forState:UIControlStateNormal];
+        cell.crossCircleButton.hidden = NO;
+        [self.game.gameCombinations replaceObjectAtIndex:indexPath.row withObject:self.currentPlayer];
+
+        BOOL hasWinner = [self checkForAWinner];
+        if (hasWinner) {
+            self.game.isGameActive = NO;
+            self.currentPlayerLabel.text = @"We have a winner!";
+            self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
+        }
+        [self toggleNextPlayer];
+        self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
     }
 }
 
 - (void)toggleNextPlayer {
     switch (self.currentPlayer.type) {
         case Cross:
-            self.currentPlayer.type = Circle;
-            self.currentPlayer.icon = circleIcon;
+            self.currentPlayer = [[Player alloc] initWithPlayerType:Circle icon:circleIcon];
             break;
         case Circle:
-            self.currentPlayer.type = Cross;
-            self.currentPlayer.icon = crossIcon;
+            self.currentPlayer = [[Player alloc] initWithPlayerType:Cross icon:crossIcon];
             break;
         default:
             break;

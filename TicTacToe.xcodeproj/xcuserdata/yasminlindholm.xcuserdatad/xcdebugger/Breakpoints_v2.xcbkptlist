@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TicTacToe/TheGame/Game.m"
-            timestampString = "535345802.494778"
+            filePath = "TicTacToe/TheGame/BoardCollectionViewController.m"
+            timestampString = "535350792.64648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-isThereAWinningCombination"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

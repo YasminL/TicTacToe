@@ -18,16 +18,14 @@
 - (id)initWithBoard:(Board *)board {
     if (self = [super init]) {
         self.board = board;
-        Player *player = [[Player alloc] initWithPlayerType:None icon:nil];
-        self.gameCombinations = [[NSMutableArray alloc] init];
-        [self.gameCombinations addObjectsFromArray:@[
-                                                     player, player, player, player,
-                                                     player, player, player, player,
-                                                     player, player, player, player,
-                                                     player, player, player, player,
-                                                     ]
-         ];
+        self.isGameActive = YES;
         
+        Player *player = [[Player alloc] initWithPlayerType:None icon:nil];
+        self.gameCombinations = [[NSMutableArray alloc] initWithCapacity:16];
+        for (int i=0;i < 16; i++) {
+            [self.gameCombinations addObject:player];
+        }
+
         self.winningCombinations = @[
                                      @[@0,@1,@2,@3], @[@4,@5,@6,@7], @[@8,@9,@10,@11], @[@12,@13,@14,@15], // Horizontal
                                      @[@0,@4,@8,@12], @[@1,@5,@9,@13], @[@2,@6,@10,@14], @[@3,@7,@11,@15], // Vertical
@@ -40,11 +38,11 @@
 
 - (BOOL)isThereAWinningCombination {
     for (NSArray *combination in self.winningCombinations) {
-        BOOL combinationHasPlayers = [self hasPlayerFor:combination];
+        BOOL combinationHasPlayers = [self hasPlayersFor:combination];
         int firstIndex = (int)[(NSNumber *)[combination objectAtIndex:0] integerValue];
-        int secondIndex = (int)[(NSNumber *)[combination objectAtIndex:0] integerValue];
-        int thirdIndex = (int)[(NSNumber *)[combination objectAtIndex:0] integerValue];
-        int fourthIndex = (int)[(NSNumber *)[combination objectAtIndex:0] integerValue];
+        int secondIndex = (int)[(NSNumber *)[combination objectAtIndex:1] integerValue];
+        int thirdIndex = (int)[(NSNumber *)[combination objectAtIndex:2] integerValue];
+        int fourthIndex = (int)[(NSNumber *)[combination objectAtIndex:3] integerValue];
         
         Player *playerInFirstIndex = [self.gameCombinations objectAtIndex:firstIndex];
         Player *playerInSecondIndex = [self.gameCombinations objectAtIndex:secondIndex];
@@ -52,16 +50,16 @@
         Player *playerInFourthIndex = [self.gameCombinations objectAtIndex:fourthIndex];
         
         if (combinationHasPlayers
-            && (playerInFirstIndex == playerInSecondIndex)
-            && (playerInFirstIndex == playerInThirdIndex)
-            && (playerInFirstIndex == playerInFourthIndex)) {
+            && (playerInFirstIndex.type == playerInSecondIndex.type)
+            && (playerInFirstIndex.type == playerInThirdIndex.type)
+            && (playerInFirstIndex.type == playerInFourthIndex.type)) {
             return YES;
         }
     }
     return NO;
 }
 
-- (BOOL)hasPlayerFor:(NSArray *)combination {
+- (BOOL)hasPlayersFor:(NSArray *)combination {
     Player *player;
     int playerCount = 0;
     for (int number = 0; number < [combination count]; number ++) {
@@ -70,7 +68,6 @@
             playerCount++;
         }
     }
-    
     return playerCount == [combination count];
 }
 
