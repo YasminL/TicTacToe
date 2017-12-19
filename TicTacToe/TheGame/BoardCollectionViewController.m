@@ -22,8 +22,11 @@
 
 @implementation BoardCollectionViewController
 static NSString * const reuseIdentifier = @"Cell";
-NSString *navigationBarTitle = @"Tic Tac Toe";
-NSString *currentPlayerText = @"Current Player:";
+static NSString *footerViewIdentifier = @"footerView";
+NSString *navigationBarTitle = @"TIC TAC TOE";
+NSString *currentPlayerText = @"CURRENT PLAYER:";
+NSString *winnerText = @"WE HAVE A WINNER!";
+NSString *newGameText = @"NEW GAME";
 NSString *crossIcon = @"crossIcon";
 NSString *circleIcon = @"circleIcon";
 
@@ -58,7 +61,7 @@ NSString *circleIcon = @"circleIcon";
 }
 
 - (void)updateUIWithWinner:(Player *)player {
-    self.currentPlayerLabel.text = @"We have a winner!";
+    self.currentPlayerLabel.text = winnerText;
     self.currentPlayerIcon.image = [UIImage imageNamed:player.icon];
 }
 
@@ -76,8 +79,8 @@ NSString *circleIcon = @"circleIcon";
     UICollectionReusableView *reusableView = nil;
     
     if (kind == UICollectionElementKindSectionFooter) {
-        BoardFooterCollectionReusableView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footerView" forIndexPath:indexPath];
-        [footerView.playRestartButton setTitle:@"NEW GAME" forState:UIControlStateNormal];
+        BoardFooterCollectionReusableView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerViewIdentifier forIndexPath:indexPath];
+        [footerView.playRestartButton setTitle:newGameText forState:UIControlStateNormal];
         footerView.delegate = self;
         reusableView = footerView;
     }
