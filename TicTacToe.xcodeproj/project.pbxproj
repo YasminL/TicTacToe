@@ -13,7 +13,7 @@
 		90EEFC651FE61752008DC42F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90EEFC641FE61752008DC42F /* Assets.xcassets */; };
 		90EEFC681FE61752008DC42F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90EEFC661FE61752008DC42F /* LaunchScreen.storyboard */; };
 		90EEFC6B1FE61752008DC42F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC6A1FE61752008DC42F /* main.m */; };
-		90EEFC751FE61752008DC42F /* TicTacToeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC741FE61752008DC42F /* TicTacToeTests.m */; };
+		90EEFC751FE61752008DC42F /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC741FE61752008DC42F /* Game.m */; };
 		90EEFC841FE61A83008DC42F /* BoardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC831FE61A83008DC42F /* BoardCollectionViewController.m */; };
 		90EEFC8B1FE61D81008DC42F /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC8A1FE61D81008DC42F /* Board.m */; };
 		90EEFC8F1FE62090008DC42F /* BoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC8E1FE62090008DC42F /* BoardCollectionViewCell.m */; };
@@ -43,7 +43,7 @@
 		90EEFC691FE61752008DC42F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90EEFC6A1FE61752008DC42F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		90EEFC701FE61752008DC42F /* TicTacToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		90EEFC741FE61752008DC42F /* TicTacToeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicTacToeTests.m; sourceTree = "<group>"; };
+		90EEFC741FE61752008DC42F /* Game.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		90EEFC761FE61752008DC42F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90EEFC821FE61A83008DC42F /* BoardCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardCollectionViewController.h; sourceTree = "<group>"; };
 		90EEFC831FE61A83008DC42F /* BoardCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardCollectionViewController.m; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		90EEFC731FE61752008DC42F /* TicTacToeTests */ = {
 			isa = PBXGroup;
 			children = (
-				90EEFC741FE61752008DC42F /* TicTacToeTests.m */,
+				90EEFC741FE61752008DC42F /* Game.m */,
 				90EEFC761FE61752008DC42F /* Info.plist */,
 			);
 			path = TicTacToeTests;
@@ -253,7 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90EEFC751FE61752008DC42F /* TicTacToeTests.m in Sources */,
+				90EEFC751FE61752008DC42F /* Game.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
