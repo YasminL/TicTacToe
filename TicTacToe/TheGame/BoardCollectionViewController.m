@@ -48,7 +48,7 @@ NSString *circleIcon = @"circleIcon";
     self.game = nil;
 }
 
-- (BOOL)checkForAWinner {
+- (BOOL)hasWinner {
     return [self.game hasWinningCombination];
 }
 
@@ -108,8 +108,7 @@ NSString *circleIcon = @"circleIcon";
         cell.crossCircleButton.hidden = NO;
         [self.game.gameCombinations replaceObjectAtIndex:indexPath.row withObject:self.currentPlayer];
 
-        BOOL hasWinner = [self checkForAWinner];
-        if (hasWinner) {
+        if ([self hasWinner]) {
             self.game.isGameActive = NO;
             [self updateUIWithWinner:self.currentPlayer];
         } else {
