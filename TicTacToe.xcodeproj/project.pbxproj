@@ -14,7 +14,7 @@
 		90EEFC681FE61752008DC42F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90EEFC661FE61752008DC42F /* LaunchScreen.storyboard */; };
 		90EEFC6B1FE61752008DC42F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC6A1FE61752008DC42F /* main.m */; };
 		90EEFC751FE61752008DC42F /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC741FE61752008DC42F /* Game.m */; };
-		90EEFC841FE61A83008DC42F /* BoardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC831FE61A83008DC42F /* BoardCollectionViewController.m */; };
+		90EEFC841FE61A83008DC42F /* TicTacToeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC831FE61A83008DC42F /* TicTacToeCollectionViewController.m */; };
 		90EEFC8B1FE61D81008DC42F /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC8A1FE61D81008DC42F /* Board.m */; };
 		90EEFC8F1FE62090008DC42F /* BoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC8E1FE62090008DC42F /* BoardCollectionViewCell.m */; };
 		90EEFC961FE62DDF008DC42F /* BoardFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EEFC951FE62DDF008DC42F /* BoardFooterCollectionReusableView.m */; };
@@ -45,8 +45,8 @@
 		90EEFC701FE61752008DC42F /* TicTacToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90EEFC741FE61752008DC42F /* Game.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		90EEFC761FE61752008DC42F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90EEFC821FE61A83008DC42F /* BoardCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardCollectionViewController.h; sourceTree = "<group>"; };
-		90EEFC831FE61A83008DC42F /* BoardCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardCollectionViewController.m; sourceTree = "<group>"; };
+		90EEFC821FE61A83008DC42F /* TicTacToeCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicTacToeCollectionViewController.h; sourceTree = "<group>"; };
+		90EEFC831FE61A83008DC42F /* TicTacToeCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicTacToeCollectionViewController.m; sourceTree = "<group>"; };
 		90EEFC891FE61D81008DC42F /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		90EEFC8A1FE61D81008DC42F /* Board.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
 		90EEFC8D1FE62090008DC42F /* BoardCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardCollectionViewCell.h; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				90EEFC611FE61752008DC42F /* Main.storyboard */,
-				90EEFC821FE61A83008DC42F /* BoardCollectionViewController.h */,
-				90EEFC831FE61A83008DC42F /* BoardCollectionViewController.m */,
+				90EEFC821FE61A83008DC42F /* TicTacToeCollectionViewController.h */,
+				90EEFC831FE61A83008DC42F /* TicTacToeCollectionViewController.m */,
 				90EEFC8D1FE62090008DC42F /* BoardCollectionViewCell.h */,
 				90EEFC8E1FE62090008DC42F /* BoardCollectionViewCell.m */,
 				90EEFC941FE62DDF008DC42F /* BoardFooterCollectionReusableView.h */,
@@ -245,7 +245,7 @@
 				90EEFC5D1FE61752008DC42F /* AppDelegate.m in Sources */,
 				90EEFC8B1FE61D81008DC42F /* Board.m in Sources */,
 				90EEFC8F1FE62090008DC42F /* BoardCollectionViewCell.m in Sources */,
-				90EEFC841FE61A83008DC42F /* BoardCollectionViewController.m in Sources */,
+				90EEFC841FE61A83008DC42F /* TicTacToeCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

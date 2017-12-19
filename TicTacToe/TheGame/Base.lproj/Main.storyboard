@@ -31,10 +31,10 @@
             </objects>
             <point key="canvasLocation" x="-1127" y="-48"/>
         </scene>
-        <!--Board Collection View Controller-->
+        <!--Tic Tac Toe Collection View Controller-->
         <scene sceneID="yLN-Fp-hIz">
             <objects>
-                <collectionViewController id="ADQ-K7-bkZ" customClass="BoardCollectionViewController" sceneMemberID="viewController">
+                <collectionViewController id="ADQ-K7-bkZ" customClass="TicTacToeCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="OIt-Eo-Afo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

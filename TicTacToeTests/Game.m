@@ -26,11 +26,13 @@ Player *circlePlayer;
 - (void)setUp {
     board = [[Board alloc] init];
     game = [[Game alloc] initWithBoard:board withActiveGame:YES];
-    crossPlayer1 = [[Player alloc] initWithPlayerType:Cross icon:@"crossIcon"];
-    crossPlayer2 = [[Player alloc] initWithPlayerType:Cross icon:@"crossIcon"];
-    crossPlayer3 = [[Player alloc] initWithPlayerType:Cross icon:@"crossIcon"];
-    crossPlayer4 = [[Player alloc] initWithPlayerType:Cross icon:@"crossIcon"];
-    circlePlayer = [[Player alloc] initWithPlayerType:Circle icon:@"circleIcon"];
+    NSString *crossIcon = @"crossIcon";
+    NSString *circleIcon = @"circleIcon";
+    crossPlayer1 = [[Player alloc] initWithPlayerType:Cross icon:crossIcon];
+    crossPlayer2 = [[Player alloc] initWithPlayerType:Cross icon:crossIcon];
+    crossPlayer3 = [[Player alloc] initWithPlayerType:Cross icon:crossIcon];
+    crossPlayer4 = [[Player alloc] initWithPlayerType:Cross icon:crossIcon];
+    circlePlayer = [[Player alloc] initWithPlayerType:Circle icon:circleIcon];
 }
 
 - (void)testHaveAWinningCombination_Horizontally {

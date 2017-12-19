@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "BoardFooterCollectionReusableView.h"
 
-@interface BoardCollectionViewController : UICollectionViewController <BoardFooterCollectionReusableViewDelegate>
+@interface TicTacToeCollectionViewController : UICollectionViewController <BoardFooterCollectionReusableViewDelegate>
 @end

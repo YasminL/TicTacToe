@@ -6,13 +6,13 @@
 //  Copyright © 2017 Yasmin Lindholm. All rights reserved.
 //
 
-#import "BoardCollectionViewController.h"
+#import "TicTacToeCollectionViewController.h"
 #import "BoardCollectionViewCell.h"
 #import "Player.h"
 #import "Board.h"
 #import "Game.h"
 
-@interface BoardCollectionViewController ()
+@interface TicTacToeCollectionViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *currentPlayerLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *currentPlayerIcon;
 @property (nonatomic) Player *currentPlayer;
@@ -20,7 +20,7 @@
 @property (nonatomic) Game *game;
 @end
 
-@implementation BoardCollectionViewController
+@implementation TicTacToeCollectionViewController
 static NSString * const reuseIdentifier = @"Cell";
 static NSString *footerViewIdentifier = @"footerView";
 NSString *navigationBarTitle = @"TIC TAC TOE";
