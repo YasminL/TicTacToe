@@ -39,14 +39,39 @@
 }
 
 - (BOOL)isThereAWinningCombination {
-    Player *player;
     for (NSArray *combination in self.winningCombinations) {
-        // check for the different kinds of combinations
-        player = [self.gameCombinations objectAtIndex:0];
-        if (player.type != None) {
-            printf("");
+        BOOL combinationHasPlayers = [self hasPlayerFor:combination];
+        int firstIndex = (int)[(NSNumber *)[combination objectAtIndex:0] integerValue];
+        int secondIndex = (int)[(NSNumber *)[combination objectAtIndex:0] integerValue];
+        int thirdIndex = (int)[(NSNumber *)[combination objectAtIndex:0] integerValue];
+        int fourthIndex = (int)[(NSNumber *)[combination objectAtIndex:0] integerValue];
+        
+        Player *playerInFirstIndex = [self.gameCombinations objectAtIndex:firstIndex];
+        Player *playerInSecondIndex = [self.gameCombinations objectAtIndex:secondIndex];
+        Player *playerInThirdIndex = [self.gameCombinations objectAtIndex:thirdIndex];
+        Player *playerInFourthIndex = [self.gameCombinations objectAtIndex:fourthIndex];
+        
+        if (combinationHasPlayers
+            && (playerInFirstIndex == playerInSecondIndex)
+            && (playerInFirstIndex == playerInThirdIndex)
+            && (playerInFirstIndex == playerInFourthIndex)) {
+            return YES;
         }
     }
-    return false;
+    return NO;
 }
+
+- (BOOL)hasPlayerFor:(NSArray *)combination {
+    Player *player;
+    int playerCount = 0;
+    for (int number = 0; number < [combination count]; number ++) {
+        player = [self.gameCombinations objectAtIndex:number];
+        if (player.type != None) {
+            playerCount++;
+        }
+    }
+    
+    return playerCount == [combination count];
+}
+
 @end

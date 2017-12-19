@@ -99,8 +99,12 @@ NSString *circleIcon = @"circleIcon";
     [self.game.gameCombinations replaceObjectAtIndex:indexPath.row withObject:self.currentPlayer];
     [self toggleNextPlayer];
     self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
-    [self checkForAWinner];
+    BOOL hasWinner = [self checkForAWinner];
+    if (hasWinner) {
+        NSLog(@"We have a winner!");
+    }
 }
+
 - (void)toggleNextPlayer {
     switch (self.currentPlayer.type) {
         case Cross:
