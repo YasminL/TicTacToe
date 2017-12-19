@@ -45,13 +45,11 @@ NSString *circleIcon = @"circleIcon";
     self.game = nil;
 }
 
-- (void)resetView {
-    NSArray *visibleItems = [self.collectionView indexPathsForVisibleItems];
-    for (NSIndexPath *indexPath in visibleItems) {
-        BoardCollectionViewCell *cell = (BoardCollectionViewCell *) [self.collectionView cellForItemAtIndexPath:indexPath];
-        [cell reset];
-    }
+- (BOOL)checkForAWinner {
+    return [self.game isThereAWinningCombination];
 }
+
+#pragma mark <UI>
 
 - (void)updateUI {
     [self.navigationItem setTitle:navigationBarTitle];
@@ -59,8 +57,17 @@ NSString *circleIcon = @"circleIcon";
     self.currentPlayerLabel.text = currentPlayerText;
 }
 
-- (BOOL)checkForAWinner {
-    return [self.game isThereAWinningCombination];
+- (void)updateUIWithWinner:(Player *)player {
+    self.currentPlayerLabel.text = @"We have a winner!";
+    self.currentPlayerIcon.image = [UIImage imageNamed:player.icon];
+}
+
+- (void)resetView {
+    NSArray *visibleItems = [self.collectionView indexPathsForVisibleItems];
+    for (NSIndexPath *indexPath in visibleItems) {
+        BoardCollectionViewCell *cell = (BoardCollectionViewCell *) [self.collectionView cellForItemAtIndexPath:indexPath];
+        [cell reset];
+    }
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -99,11 +106,11 @@ NSString *circleIcon = @"circleIcon";
         BOOL hasWinner = [self checkForAWinner];
         if (hasWinner) {
             self.game.isGameActive = NO;
-            self.currentPlayerLabel.text = @"We have a winner!";
+            [self updateUIWithWinner:self.currentPlayer];
+        } else {
+            [self toggleNextPlayer];
             self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
         }
-        [self toggleNextPlayer];
-        self.currentPlayerIcon.image = [UIImage imageNamed:self.currentPlayer.icon];
     }
 }
 
@@ -120,7 +127,7 @@ NSString *circleIcon = @"circleIcon";
     }
 }
 
-#pragma mark BoardFooterCollectionReusableViewDelegate
+#pragma mark <BoardFooterCollectionReusableViewDelegate>
 
 - (void)didTapNewGameButton {
     [self resetView];

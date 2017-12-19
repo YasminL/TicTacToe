@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TicTacToe/TheGame/BoardCollectionViewController.m"
-            timestampString = "535350792.64648"
+            timestampString = "535352936.508859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-updateUIWithWinner:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

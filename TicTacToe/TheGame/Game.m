@@ -31,6 +31,7 @@
                                      @[@0,@4,@8,@12], @[@1,@5,@9,@13], @[@2,@6,@10,@14], @[@3,@7,@11,@15], // Vertical
                                      @[@0,@5,@10,@15], @[@3,@6,@9,@12], // Diaginal
                                      @[@0,@3,@12,@15], // Corners
+                                     @[@0,@1,@4,@5], @[@1,@2,@5,@6], @[@2,@3,@6,@7], @[@4,@5,@8,@9], @[@5,@6,@9,@10], @[@6,@7,@10,@11], @[@8,@9,@12,@13], @[@9,@10,@13,@14], @[@10,@11,@14,@15],
                                      ];
     }
     return self;
@@ -62,7 +63,8 @@
 - (BOOL)hasPlayersFor:(NSArray *)combination {
     Player *player;
     int playerCount = 0;
-    for (int number = 0; number < [combination count]; number ++) {
+    for (NSNumber *index in combination) {
+        int number = (int)[index integerValue];
         player = [self.gameCombinations objectAtIndex:number];
         if (player.type != None) {
             playerCount++;
